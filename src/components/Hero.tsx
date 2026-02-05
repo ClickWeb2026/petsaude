@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Heart } from 'lucide-react';
 import { Button } from './ui/Button';
+import { useLanguage } from '../i18n/useLanguage';
+
 export function Hero() {
+  const { t } = useLanguage();
+  
   const containerVariants = {
     hidden: {
       opacity: 0
@@ -44,16 +48,16 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-teal-600 font-medium text-sm mb-6 shadow-sm border border-teal-100">
 
               <Heart size={16} className="text-amber-400 fill-amber-400" />
-              <span>Voted #1 Vet Clinic in the City</span>
+              <span>{t.hero.badge}</span>
             </motion.div>
 
             <motion.h1
               variants={itemVariants}
               className="text-5xl lg:text-7xl font-bold text-teal-900 leading-tight mb-6">
 
-              Care that makes them{' '}
+              {t.hero.title}{' '}
               <span className="text-teal-500 relative inline-block">
-                wag
+                {t.hero.titleHighlight}
                 <svg
                   className="absolute w-full h-3 -bottom-1 left-0 text-amber-400"
                   viewBox="0 0 100 10"
@@ -67,16 +71,14 @@ export function Hero() {
 
                 </svg>
               </span>{' '}
-              more.
+              {t.hero.titleEnd}
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-xl text-teal-700 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
 
-              We combine top-tier medical expertise with a warm, fear-free
-              approach. Because going to the vet should feel like visiting a
-              friend.
+              {t.hero.description}
             </motion.p>
 
             <motion.div
@@ -84,10 +86,10 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 
               <Button variant="primary" className="text-lg px-8">
-                Book Appointment
+                {t.hero.bookAppointment}
               </Button>
               <Button variant="outline" className="text-lg px-8 group">
-                Meet Our Team{' '}
+                {t.hero.meetTeam}{' '}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>

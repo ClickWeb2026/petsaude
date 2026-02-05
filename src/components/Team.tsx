@@ -1,32 +1,10 @@
 import { motion } from 'framer-motion';
 import { Award, Heart } from 'lucide-react';
-const team = [
-{
-  name: 'Dr. Sarah Miller',
-  role: 'Medical Director',
-  image:
-  'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop',
-  funFact: 'Has a three-legged cat named Tripod who rules her house.',
-  specialty: 'Internal Medicine'
-},
-{
-  name: 'Dr. James Chen',
-  role: 'Senior Veterinarian',
-  image:
-  'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop',
-  funFact: 'Sings opera to calm nervous dogs (it actually works!).',
-  specialty: 'Surgery'
-},
-{
-  name: 'Dr. Emily Rodriguez',
-  role: 'Exotic Pet Specialist',
-  image:
-  'https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=2070&auto=format&fit=crop',
-  funFact: 'Once performed a checkup on a baby kangaroo.',
-  specialty: 'Exotics'
-}];
+import { useLanguage } from '../i18n/useLanguage';
 
 export function Team() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="our-team"
@@ -49,7 +27,7 @@ export function Team() {
             }}
             className="text-teal-600 font-semibold tracking-wider uppercase text-sm">
 
-            Meet the Experts
+            {t.team.badge}
           </motion.span>
           <motion.h2
             initial={{
@@ -65,13 +43,13 @@ export function Team() {
             }}
             className="text-4xl font-bold text-teal-900 mt-2 mb-4">
 
-            Passionate about pets, <br />
-            obsessed with care.
+            {t.team.heading} <br />
+            {t.team.headingContinue}
           </motion.h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {team.map((member, index) =>
+          {t.team.members.map((member, index) =>
           <motion.div
             key={member.name}
             initial={{
@@ -102,7 +80,7 @@ export function Team() {
                 transition={{
                   duration: 0.6
                 }}
-                src={member.image}
+                src={(member as any).image || '/placeholder.jpg'}
                 alt={member.name}
                 className="w-full h-full object-cover" />
 
@@ -120,7 +98,7 @@ export function Team() {
                   <div className="flex items-start gap-3 text-teal-700 bg-teal-50 p-3 rounded-xl">
                     <Award className="w-5 h-5 text-teal-500 shrink-0 mt-0.5" />
                     <p className="text-sm">
-                      <span className="font-semibold">Specialty:</span>{' '}
+                      <span className="font-semibold">{t.team.specialtyLabel}</span>{' '}
                       {member.specialty}
                     </p>
                   </div>
@@ -128,7 +106,7 @@ export function Team() {
                   <div className="flex items-start gap-3 text-teal-700 bg-amber-50 p-3 rounded-xl">
                     <Heart className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                     <p className="text-sm">
-                      <span className="font-semibold">Fun Fact:</span>{' '}
+                      <span className="font-semibold">{t.team.funFactLabel}</span>{' '}
                       {member.funFact}
                     </p>
                   </div>

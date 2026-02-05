@@ -1,7 +1,18 @@
 import { motion } from 'framer-motion';
 import { PawPrint } from 'lucide-react';
 import { Button } from './ui/Button';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useLanguage } from '../i18n/useLanguage';
+
 export function Navbar() {
+  const { t } = useLanguage();
+  const navItems = [
+    t.navbar.services,
+    t.navbar.ourTeam,
+    t.navbar.newPatients,
+    t.navbar.resources,
+  ];
+
   return (
     <motion.nav
       initial={{
@@ -27,11 +38,11 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {['Services', 'Our Team', 'New Patients', 'Resources'].map(
+            {navItems.map(
               (item) =>
               <a
                 key={item}
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                href={`#${item.toLowerCase().replace(/\s+/g, '-').replace(/ã/g, 'a').replace(/ç/g, 'c')}`}
                 className="text-teal-700 hover:text-teal-500 font-medium transition-colors">
 
                   {item}
@@ -39,8 +50,9 @@ export function Navbar() {
 
             )}
             <Button variant="primary" className="px-5 py-2 text-sm">
-              Book Visit
+              {t.navbar.bookVisit}
             </Button>
+            <LanguageSwitcher />
           </div>
         </div>
       </div>

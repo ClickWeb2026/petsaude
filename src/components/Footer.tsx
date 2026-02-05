@@ -7,7 +7,11 @@ import {
   Phone,
   Mail } from
 'lucide-react';
+import { useLanguage } from '../i18n/useLanguage';
+
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-teal-900 text-teal-50 pt-20 pb-10 rounded-t-[3rem] mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,8 +27,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-teal-200 leading-relaxed">
-              Making tails wag and purrs rumble since 2015. We treat your pets
-              like our own family.
+              {t.footer.description}
             </p>
             <div className="flex gap-4">
               {[Facebook, Instagram, Twitter].map((Icon, i) =>
@@ -41,15 +44,9 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6">Quick Links</h4>
+            <h4 className="text-lg font-bold text-white mb-6">{t.footer.quickLinks}</h4>
             <ul className="space-y-4">
-              {[
-              'About Us',
-              'Services',
-              'Our Team',
-              'Pet Portal',
-              'Careers'].
-              map((item) =>
+              {t.footer.quickLinkItems.map((item) =>
               <li key={item}>
                   <a
                   href="#"
@@ -65,47 +62,43 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6">Contact Us</h4>
+            <h4 className="text-lg font-bold text-white mb-6">{t.footer.contactUs}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-teal-200">
                 <MapPin className="w-5 h-5 text-teal-400 shrink-0" />
-                <span>
-                  123 Wagging Tail Lane
-                  <br />
-                  Petville, CA 90210
-                </span>
+                <span dangerouslySetInnerHTML={{ __html: t.footer.address }} />
               </li>
               <li className="flex items-center gap-3 text-teal-200">
                 <Phone className="w-5 h-5 text-teal-400 shrink-0" />
-                <span>(555) 123-4567</span>
+                <span>{t.footer.phone}</span>
               </li>
               <li className="flex items-center gap-3 text-teal-200">
                 <Mail className="w-5 h-5 text-teal-400 shrink-0" />
-                <span>hello@pawsitivecare.com</span>
+                <span>{t.footer.email}</span>
               </li>
             </ul>
           </div>
 
           {/* Hours */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6">Opening Hours</h4>
+            <h4 className="text-lg font-bold text-white mb-6">{t.footer.hours}</h4>
             <ul className="space-y-3 text-teal-200">
               <li className="flex justify-between">
-                <span>Mon - Fri</span>
+                <span>{t.footer.mondayFriday}</span>
                 <span className="font-medium text-white">
-                  8:00 AM - 7:00 PM
+                  {t.footer.time1}
                 </span>
               </li>
               <li className="flex justify-between">
-                <span>Saturday</span>
+                <span>{t.footer.saturday}</span>
                 <span className="font-medium text-white">
-                  9:00 AM - 4:00 PM
+                  {t.footer.time2}
                 </span>
               </li>
               <li className="flex justify-between">
-                <span>Sunday</span>
+                <span>{t.footer.sunday}</span>
                 <span className="font-medium text-amber-400">
-                  Emergency Only
+                  {t.footer.closed}
                 </span>
               </li>
             </ul>
@@ -114,8 +107,7 @@ export function Footer() {
 
         <div className="border-t border-teal-800 pt-8 text-center text-teal-400 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} PawsitiveCare Veterinary Clinic.
-            All rights reserved.
+            {t.footer.copyright}
           </p>
         </div>
       </div>
