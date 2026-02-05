@@ -1,4 +1,3 @@
-import React, { Children } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Heart } from 'lucide-react';
 import { Button } from './ui/Button';
