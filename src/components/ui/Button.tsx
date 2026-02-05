@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 interface ButtonProps extends HTMLMotionProps<'button'> {
   variant?: 'primary' | 'secondary' | 'outline';
